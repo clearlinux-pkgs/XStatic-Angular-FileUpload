@@ -4,7 +4,7 @@
 #
 Name     : XStatic-Angular-FileUpload
 Version  : 1.4.0.1
-Release  : 5
+Release  : 6
 URL      : https://pypi.python.org/packages/source/X/XStatic-Angular-FileUpload/XStatic-Angular-FileUpload-1.4.0.1.tar.gz
 Source0  : https://pypi.python.org/packages/source/X/XStatic-Angular-FileUpload/XStatic-Angular-FileUpload-1.4.0.1.tar.gz
 Summary  : Angular-FileUpload 1.4.0 (XStatic packaging standard)
