@@ -4,7 +4,7 @@
 #
 Name     : XStatic-Angular-FileUpload
 Version  : 12.0.4.0
-Release  : 7
+Release  : 8
 URL      : https://files.pythonhosted.org/packages/4d/fd/c3051915d2f12e8fa11f59c01162ce85e38eca15d9ec73a3d7b271b49744/XStatic-Angular-FileUpload-12.0.4.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/4d/fd/c3051915d2f12e8fa11f59c01162ce85e38eca15d9ec73a3d7b271b49744/XStatic-Angular-FileUpload-12.0.4.0.tar.gz
 Summary  : Angular-FileUpload 12.0.4 (XStatic packaging standard)
@@ -54,7 +54,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1533821973
+export SOURCE_DATE_EPOCH=1533854070
 python3 setup.py build -b py3
 
 %install
