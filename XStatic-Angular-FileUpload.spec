@@ -4,14 +4,14 @@
 #
 Name     : XStatic-Angular-FileUpload
 Version  : 12.0.4.0
-Release  : 13
+Release  : 14
 URL      : https://files.pythonhosted.org/packages/4d/fd/c3051915d2f12e8fa11f59c01162ce85e38eca15d9ec73a3d7b271b49744/XStatic-Angular-FileUpload-12.0.4.0.tar.gz
 Source0  : https://files.pythonhosted.org/packages/4d/fd/c3051915d2f12e8fa11f59c01162ce85e38eca15d9ec73a3d7b271b49744/XStatic-Angular-FileUpload-12.0.4.0.tar.gz
 Summary  : Angular-FileUpload 12.0.4 (XStatic packaging standard)
 Group    : Development/Tools
 License  : MIT
-Requires: XStatic-Angular-FileUpload-python3
-Requires: XStatic-Angular-FileUpload-python
+Requires: XStatic-Angular-FileUpload-python = %{version}-%{release}
+Requires: XStatic-Angular-FileUpload-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
 
 %description
@@ -30,7 +30,7 @@ BuildRequires : buildreq-distutils3
 %package python
 Summary: python components for the XStatic-Angular-FileUpload package.
 Group: Default
-Requires: XStatic-Angular-FileUpload-python3
+Requires: XStatic-Angular-FileUpload-python3 = %{version}-%{release}
 Provides: xstatic-angular-fileupload-python
 
 %description python
@@ -41,6 +41,7 @@ python components for the XStatic-Angular-FileUpload package.
 Summary: python3 components for the XStatic-Angular-FileUpload package.
 Group: Default
 Requires: python3-core
+Provides: pypi(xstatic_angular_fileupload)
 
 %description python3
 python3 components for the XStatic-Angular-FileUpload package.
@@ -48,18 +49,26 @@ python3 components for the XStatic-Angular-FileUpload package.
 
 %prep
 %setup -q -n XStatic-Angular-FileUpload-12.0.4.0
+cd %{_builddir}/XStatic-Angular-FileUpload-12.0.4.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1533854070
-python3 setup.py build -b py3
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1583702690
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
+export MAKEFLAGS=%{?_smp_mflags}
+python3 setup.py build
 
 %install
+export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
-python3 -tt setup.py build -b py3 install --root=%{buildroot}
+python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
 echo ----[ mark ]----
